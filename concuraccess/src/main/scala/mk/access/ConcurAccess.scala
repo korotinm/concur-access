@@ -54,10 +54,10 @@ abstract class ConcurAccess(ttl: FiniteDuration = 5 minutes) extends LazyLogging
               data = Some(now, value)
               p.success(value)
             case Failure(ex) if currVal.isDefined =>
-              logger.warn(s"Unsuccessful attempt to update value. Lastupdate: $currVal", ex)
+              logger.warn(s"Unsuccessful attempt to update value. Latest data: $currVal", ex)
               p.success(currVal.get._2)
             case Failure(ex) =>
-              logger.warn(s"Unsuccessful attempt to create initial value for config", ex)
+              logger.warn(s"Unsuccessful attempt to create initial value", ex)
               p.failure(ex)
           }
           doUpdateFut.set(None)
