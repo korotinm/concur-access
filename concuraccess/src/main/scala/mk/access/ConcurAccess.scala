@@ -25,8 +25,7 @@ abstract class ConcurAccess(ttl: FiniteDuration = 5 minutes) extends LazyLogging
   protected def access(): Future[A]
 
   def get()(implicit ec: ExecutionContext): Future[A] = {
-
-    lazy val now = Instant.now
+    val now = Instant.now
     val currVal = data
 
     def checkLifeTime = currVal.exists {
