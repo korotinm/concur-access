@@ -22,9 +22,12 @@ lazy val commonSettings = Seq(
     "-unchecked",
     "-Ywarn-unused",
     "-deprecation",
-    "-Ypartial-unification"
+    "-Ypartial-unification",
+    "-feature",
+    "-language:postfixOps",
+    "-Xfatal-warnings"
   ),
-  javacOptions ++= Seq("-Xfatal-warnings", "-source", "1.8", "-target", "1.8"),
+  javacOptions ++= Seq("-source", "1.8", "-target", "1.8"),
   resolvers += "Typesafe" at "http://repo.typesafe.com/typesafe/releases/",
   libraryDependencies ++= commonDependencies
 )
